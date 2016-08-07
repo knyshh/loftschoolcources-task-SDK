@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container">
+    <h1 id="headerInfo"></h1>
+
+    <div id="results"></div>
+</div>
+
+<script src="src/js/script.js"></script>
+
+<!--<script language="javascript">
+    VK.init({
+        apiId: 5574058
+    });
+
+    let cb = response => {
+        console.log(response);
+        if (response.status == 'connected') {
+            console.log('авторизация прошла успешно');
+        } else {
+            console.log('ошибка авторизации');
+        }
+    };
+
+    VK.Auth.login(cb);
+</script>-->
+
+<script type="text/x-handlebars-template" id="friendsItem">
+    <ul class="list-group" id="friendsList">
+        {{#each list}}
+        <li class="list-group-item">
+            <img src="{{ photo_100}}" alt="{{first_name}} {{last_name}}" class="pull-left" style="margin-right: 20px;">
+            <div class="caption" style="overflow: hidden;">
+                <h3><span>{{first_name}} </span> <span>{{last_name}} </span></h3>
+                <h4>Дата рождения: {{bdate}}</h4>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+<!-- bower:js -->
+<script src="bower_components/handlebars/handlebars.js"></script>
+<!-- endbower -->
+</body>
+</html>
