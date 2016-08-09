@@ -1,3 +1,36 @@
+function sortFriendsList(list) {
+    list.sort((a,b)=>{
+        if(!a.bdate) return 1;
+    if(!b.bdate) return -1;
+    return parseToDate(b.bdate)-parseToDate(a.bdate);
+});
+    return list;
+};
+
+
+//функция нахождения возраста человека на сегодняшний день
+/*function getAgePerson(bdate){
+    if(!bdate) return;
+    return (Date.now() - parseToDate(bdate))/31536000000>>0;  // Divide by 31536000000 = 1000*60*60*24*365
+}*/
+//parse to date bdate from vk
+function convertToDate(bdate) {
+    let date = bdate.split('.');
+    return new Date(`${date[2]}-${date[1]}-${date[0]}`);
+};
+
+function sortFriendsList(list) {
+    list.sort((a,b)=>{
+        if(!a.bdate) return 1;
+    if(!b.bdate) return -1;
+    /*console.log(a.bdate);
+    console.log(b.bdate);
+    console.log(a);
+    console.log(b);*/
+    return convertToDate(b.bdate)-convertToDate(a.bdate);
+    });
+    return list;
+};
 //(function () {
   //"use strict";
   new Promise(function(resolve) {
@@ -41,7 +74,7 @@
         } else {
           let source = friendsItem.innerHTML;
           let templateFn = Handlebars.compile(source);
-          let template = templateFn({ list: serverAnswer.response.items });
+            let template = templateFn({ list:  sortFriendsList(serverAnswer.response.items) });
 
           results.innerHTML = template;
 
