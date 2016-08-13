@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 //(function () {
   //"use strict";
   new Promise(function(resolve) {
@@ -88,3 +89,23 @@
     alert(`Ошибка: ${e.message}`);
   });
 //})();
+
+},{"./module/sortedAB":2}],2:[function(require,module,exports){
+function sortAB(a, b) {
+    let
+        aMonth = parseInt(a.bdate.split('.')[1]),
+        bMonth = parseInt(b.bdate.split('.')[1]),
+        aDay = parseInt(a.bdate.split('.')[0]),
+        bDay = parseInt(b.bdate.split('.')[0]);
+
+
+    if(aMonth > bMonth) return 1;
+    else if(aMonth < bMonth) return -1;
+    else {
+        if(aDay > bDay) return 1;
+        else if(aDay < bDay) return -1;
+        else return 0;
+    }
+}
+module.exports = sortAB;
+},{}]},{},[1])
